@@ -1,0 +1,938 @@
+[
+  {
+    "id": "1",
+    "text": "Rate how you feel at this moment using the scale below:",
+    "type": "matrix",
+    "choices": [
+      { "text": "very slightly/not at all", "value": 0 },
+      { "text": "a little", "value": 1 },
+      { "text": "moderately", "value": 2 },
+      { "text": "quite a bit", "value": 3 },
+      { "text": "extremely", "value": 4 }
+    ],
+    "questions": [
+      { "text": "Sad", "id": 1 },
+      { "text": "Nervous", "id": 2 },
+      { "text": "Upset", "id": 3 },
+      { "text": "Angry", "id": 4 },
+      { "text": "Frustrated", "id": 5 },
+      { "text": "Stressed", "id": 6 },
+      { "text": "Bored", "id": 7 },
+      { "text": "Happy", "id": 8 },
+      { "text": "Excited", "id": 9 },
+      { "text": "Alert", "id": 10 },
+      { "text": "Strong", "id": 11 },
+      { "text": "Relaxed", "id": 12 }
+    ],
+    "conditions": {
+      "*": 2
+    }
+  },
+  {
+    "id": "2",
+    "text": "How clear are you about the way you feel at this moment?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 3
+    }
+  },
+  {
+    "id": "3",
+    "text":
+      "How strongly do you crave opoids(like pain killers, heroin, oxycodone) at this moment?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 4
+    }
+  },
+  {
+    "id": "4",
+    "text": "When did you start craving at this level?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "Right before the text" },
+      { "value": 1, "text": "5-10 minutes ago" },
+      { "value": 2, "text": "10-15 minutes ago" },
+      { "value": 3, "text": "15-20 minutes ago" },
+      { "value": 4, "text": "More than 20 minutes ago" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 5
+    }
+  },
+  {
+    "id": "5",
+    "text": "How important is it to you that you remain sober?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 6
+    }
+  },
+  {
+    "id": "6",
+    "text": "How confident are you that you will remain sober?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 7
+    }
+  },
+  {
+    "id": "7",
+    "text": "Where are you?",
+    "type": "text",
+    "multiline": true,
+    "mandatory": true,
+    "conditions": {
+      "*": "8"
+    }
+  },
+  {
+    "id": "8",
+    "text": "What are you doing?",
+    "type": "text",
+    "multiline": true,
+    "mandatory": true,
+    "conditions": {
+      "*": "9"
+    }
+  },
+  {
+    "id": "9",
+    "text": "Are you alone?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 10,
+      "1": 15
+    }
+  },
+  {
+    "id": "10",
+    "text": "Who are you with?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": "Parent(s)", "text": "Parent(s)" },
+      { "value": "Friend(s)", "text": "Friend(s)" },
+      { "value": "Acquaintance(s)", "text": "Acquaintance(s)" },
+      { "value": "Romantic partner(s)", "text": "Romantic partner(s)" },
+      { "value": "Roommate(s)", "text": "Roommate(s)" },
+      { "value": "Coworker(s)", "text": "Coworker(s)" }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "*": 11
+    }
+  },
+  {
+    "id": "11",
+    "text": "How close do you feel to your ${10}?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "*": 12
+    }
+  },
+  {
+    "id": "12",
+    "text": "Have you ever used opioids with ${10}?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 13
+    }
+  },
+  {
+    "id": "13",
+    "text": "Can ${10} find you opiods?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 14
+    }
+  },
+  {
+    "id": "14",
+    "text": "Does ${10} use Opioids?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 15
+    }
+  },
+  {
+    "id": "15",
+    "text": "Did you use opioids since you last completed this survey?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "1": 16,
+      "*": 30
+    }
+  },
+  {
+    "id": "16",
+    "text":
+      "Rate how you were feeling right before you used opioids using the scale below:",
+    "type": "matrix",
+    "choices": [
+      { "text": "very slightly/not at all", "value": 0 },
+      { "text": "a little", "value": 1 },
+      { "text": "moderately", "value": 2 },
+      { "text": "quite a bit", "value": 3 },
+      { "text": "extremely", "value": 4 }
+    ],
+    "questions": [
+      { "text": "Sad", "id": 1 },
+      { "text": "Nervous", "id": 2 },
+      { "text": "Upset", "id": 3 },
+      { "text": "Angry", "id": 4 },
+      { "text": "Frustrated", "id": 5 },
+      { "text": "Stressed", "id": 6 },
+      { "text": "Bored", "id": 7 },
+      { "text": "Happy", "id": 8 },
+      { "text": "Excited", "id": 9 },
+      { "text": "Alert", "id": 10 },
+      { "text": "Strong", "id": 11 },
+      { "text": "Relaxed", "id": 12 }
+    ],
+    "conditions": {
+      "*": 17
+    }
+  },
+  {
+    "id": "17",
+    "text": "How long before this message did you use opioids?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "Right before the text" },
+      { "value": 1, "text": "15 minutes ago" },
+      { "value": 2, "text": "30 minutes ago" },
+      { "value": 3, "text": "45 minutes ago" },
+      { "value": 4, "text": "1 hour ago or longer" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 18
+    }
+  },
+  {
+    "id": "18",
+    "text":
+      "How strong was your craving before you used opiods (like pain killers, heroin, oxycodone)?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 19
+    }
+  },
+  {
+    "id": "19",
+    "text": "How long did your craving stay at this level before you used?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 1, "text": "5-10 minutes" },
+      { "value": 2, "text": "10-15 minutes" },
+      { "value": 3, "text": "15-20 minutes" },
+      { "value": 4, "text": "More than 20 minutes" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 20
+    }
+  },
+  {
+    "id": "20",
+    "text": "How important was it for you to maintain sober before you used?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 21
+    }
+  },
+  {
+    "id": "21",
+    "text":
+      "How confident were you that you would remain sober before you used?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 22
+    }
+  },
+  {
+    "id": "22",
+    "text": "Where were you right before you used?",
+    "mandatory": true,
+    "conditions": {
+      "*": "23"
+    }
+  },
+  {
+    "id": "23",
+    "text": "What were you doing right before you used?",
+    "mandatory": true,
+    "conditions": {
+      "*": "24"
+    }
+  },
+  {
+    "id": "24",
+    "text": "Were you alone right before you used?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "1": 25,
+      "*": 26
+    }
+  },
+  {
+    "id": "25",
+    "text": "Who were you with right before you used?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 1, "text": "parent(s)" },
+      { "value": 2, "text": "Friend(s)" },
+      { "value": 3, "text": "acquaintance(s)" },
+      { "value": 4, "text": "romantic partner(s)" },
+      { "value": 5, "text": "roommate(s)" },
+      { "value": 6, "text": "coworker(s)" }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "*": 26
+    }
+  },
+  {
+    "id": "26",
+    "text": "Before using, did you",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      {
+        "value": 1,
+        "text": "Do something to fix the reason for how you were feeling."
+      },
+      {
+        "value": 2,
+        "text": "Feel unable to stop thinking about how you were feeling."
+      },
+      {
+        "value": 3,
+        "text": "Do something to keep your mind off how you were feeling."
+      },
+      {
+        "value": 4,
+        "text": "Change how you viewed the reason for how you were feeling."
+      },
+      { "value": 5, "text": "Try not to think about how you were feeling." },
+      { "value": 6, "text": "Talk with someone about how you were feeling." },
+      { "value": 7, "text": "Smoke cigarettes." },
+      { "value": 8, "text": "Drink alcohol." },
+      { "value": 9, "text": "Use opioids." },
+      { "value": 10, "text": "Use non-opioid drugs." },
+      { "value": 11, "text": "Eat something." },
+      { "value": 12, "text": "Try to relax." },
+      { "value": 13, "text": "Go to sleep." },
+      { "value": 14, "text": "Argue with someone." },
+      { "value": 15, "text": "Throw or hit something." },
+      { "value": 16, "text": "Think that things will stay bad." },
+      { "value": 17, "text": "Just feel bad." }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "*": 27
+    }
+  },
+  {
+    "id": "27",
+    "text": "For how long did you do that?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "less than 1 minute" },
+      { "value": 1, "text": "1-5 minutes" },
+      { "value": 2, "text": "5-10 minutes" },
+      { "value": 3, "text": "more than 10 minutes" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 28
+    }
+  },
+  {
+    "id": "28",
+    "text": "How clear are you about the way you feel at this moment?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 29
+    }
+  },
+  {
+    "id": "29",
+    "text":
+      "At that time, did you also use any of the following (check all that apply)",
+    "type": "checkbox",
+    "options": [
+      { "value": 0, "text": "tobaco" },
+      { "value": 1, "text": "alcohol" },
+      { "value": 2, "text": "marijuana" },
+      { "value": 3, "text": "stimulants" },
+      { "value": 4, "text": "downers" },
+      { "value": 5, "text": "psychedelics" },
+      { "value": 6, "text": "No, I did not." }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": "END"
+    }
+  },
+  {
+    "id": "30",
+    "text":
+      "At that time, did you also use any of the following (check all that apply)",
+    "type": "checkbox",
+    "options": [
+      { "value": 0, "text": "tobaco" },
+      { "value": 1, "text": "alcohol" },
+      { "value": 2, "text": "marijuana" },
+      { "value": 3, "text": "stimulants (like cocaine or meth)" },
+      { "value": 4, "text": "downers (like Xanax)" },
+      { "value": 5, "text": "psychedelics (like LSD or shrooms)" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": "31"
+    }
+  },
+  {
+    "id": "31",
+    "text": "Think about the time you felt the worst(most negative) since we last messaged you. Think about the little things that got under your skin, when something bugged you, or somebody annoyed you. Rate how you were feeling when you felt the worst (most negative) since we last messaged youusing the scale below:",
+    "type": "matrix",
+    "choices": [
+      { "text": "very slightly/not at all", "value": 0 },
+      { "text": "a little", "value": 1 },
+      { "text": "moderately", "value": 2 },
+      { "text": "quite a bit", "value": 3 },
+      { "text": "extremely", "value": 4 }
+    ],
+    "questions": [
+      { "text": "Sad", "id": 1 },
+      { "text": "Nervous", "id": 2 },
+      { "text": "Upset", "id": 3 },
+      { "text": "Angry", "id": 4 },
+      { "text": "Frustrated", "id": 5 },
+      { "text": "Stressed", "id": 6 },
+      { "text": "Bored", "id": 7 },
+      { "text": "Happy", "id": 8 },
+      { "text": "Excited", "id": 9 },
+      { "text": "Alert", "id": 10 },
+      { "text": "Strong", "id": 11 },
+      { "text": "Relaxed", "id": 12 }
+    ],
+    "conditions": {
+      "*": 32
+    }
+  },
+  {
+    "id": "32",
+    "text": "How strongly did you crave opioids (like pain killers, heroin, oxycodone) when you felt the most (most negative)?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 33
+    }
+  },
+  {
+    "id": "33",
+    "text": "How long after you began to feel negative did you start craving at this level?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "Right before the text" },
+      { "value": 1, "text": "5-10 minutes ago" },
+      { "value": 2, "text": "10-15 minutes ago" },
+      { "value": 3, "text": "15-20 minutes ago" },
+      { "value": 4, "text": "More than 20 minutes ago" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 34
+    }
+  },
+  {
+    "id": "34",
+    "text": "How important was it to you that you remain sober when you felt the worst (most negative)?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 35
+    }
+  },
+  {
+    "id": "35",
+    "text": "How confident were you that you that you would remain sober when you felt the worst (most negative)?",
+    "type": "range",
+    "mandatory": true,
+    "minimumValue": 0,
+    "maximumValue": 10,
+    "conditions": {
+      "*": 36
+    }
+  },
+  {
+    "id": "36",
+    "text": "When did you feel the worst(most negative) since we last messaged you?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "Right before the text" },
+      { "value": 1, "text": "15 minutes ago" },
+      { "value": 2, "text": "30 minutes ago" },
+      { "value": 3, "text": "45 minutes ago" },
+      { "value": 4, "text": "1 hour ago" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 37
+    }
+  },
+  {
+    "id": "37",
+    "text": "How clear wereyou about the way you felt at the worst point (most negative) since we last messaged you?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 38
+    }
+  },
+  {
+    "id": "38",
+    "text": "Where were you when you felt the worst (most negative) during the since we last messaged you?",
+    "type": "text",
+    "multiline": true,
+    "mandatory": true,
+    "conditions": {
+      "*": "39"
+    }
+  },
+  {
+    "id": "39",
+    "text": "What were you doing when you felt the worst (most negative) since we last messaged you?",
+    "type": "text",
+    "multiline": true,
+    "mandatory": true,
+    "conditions": {
+      "*": "40"
+    }
+  },
+  {
+    "id": "40",
+    "text": "Where you alone when you felt the worst (most negative) since we last messaged you?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 47,
+      "2": 41
+    }
+  },
+  {
+    "id": "41",
+    "text": "Who were you with when you feltthe worst (most negative) since we last messaged you?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 1, "text": "parent(s)" },
+      { "value": 2, "text": "Friend(s)" },
+      { "value": 3, "text": "acquaintance(s)" },
+      { "value": 4, "text": "romantic partner(s)" },
+      { "value": 5, "text": "roommate(s)" },
+      { "value": 6, "text": "coworker(s)" }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "*": 42
+    }
+  },
+  {
+    "id": "43",
+    "text": "How close did you feel to your ${41} when you felt the worst (most negative) since we last messaged to you?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 43
+    }
+  },
+  {
+    "id": "43",
+    "text": "Have you ever used opioids with ${41}?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 44
+    }
+  },
+  {
+    "id": "44",
+    "text": "Does ${41} use Opioids?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 45
+    }
+  },
+  {
+    "id": "45",
+    "text": "Can ${41} find you opiods?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 46
+    }
+  },
+  {
+    "id": "46",
+    "text": "Was ${41} responsible for the way you felt when you felt the worst (most negative) since we last messaged you?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [{ "value": 1, "text": "Yes" }, { "value": 2, "text": "No" }],
+    "allow_other": false,
+    "conditions": {
+      "*": 47
+    }
+  },
+  {
+    "id": "47",
+    "text": "Who (if anyone) was resposible for the way you felt when you felt the worst (most negative) since we last messaged you?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "No one was responsible" }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "0": 49,
+      "*": 48
+    }
+  },
+  {
+    "id": "48",
+    "text": "What did they do to make you feel this way?",
+    "type": "text",
+    "multiline": true,
+    "mandatory": true,
+    "conditions": {
+      "*": "49"
+    }
+  },
+  {
+    "id": "49",
+    "text": "When you started feeling the worst (most negative) since we last messaged you, did you:",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      {
+        "value": 1,
+        "text": "Do something to fix the reason for how you were feeling."
+      },
+      {
+        "value": 2,
+        "text": "Feel unable to stop thinking about how you were feeling."
+      },
+      {
+        "value": 3,
+        "text": "Do something to keep your mind off how you were feeling."
+      },
+      {
+        "value": 4,
+        "text": "Change how you viewed the reason for how you were feeling."
+      },
+      { "value": 5, "text": "Try not to think about how you were feeling." },
+      { "value": 6, "text": "Talk with someone about how you were feeling." },
+      { "value": 7, "text": "Smoke cigarettes." },
+      { "value": 8, "text": "Drink alcohol." },
+      { "value": 9, "text": "Use opioids." },
+      { "value": 10, "text": "Use non-opioid drugs." },
+      { "value": 11, "text": "Eat something." },
+      { "value": 12, "text": "Try to relax." },
+      { "value": 13, "text": "Go to sleep." },
+      { "value": 14, "text": "Argue with someone." },
+      { "value": 15, "text": "Throw or hit something." },
+      { "value": 16, "text": "Think that things will stay bad." },
+      { "value": 17, "text": "Just feel bad." }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "*": 50
+    }
+  },
+  {
+    "id": "50",
+    "text": "For how long did you do that?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "less than 1 minute" },
+      { "value": 1, "text": "1-5 minutes" },
+      { "value": 2, "text": "5-10 minutes" },
+      { "value": 3, "text": "more than 10 minutes" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 51
+    }
+  },
+  {
+    "id": "51",
+    "text": "How much did that make you feel better?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 52
+    }
+  },
+  {
+    "id": "52",
+    "text": "At what time, did you also:",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      {
+        "value": 0,
+        "text": "No, I did not do anything else about how I was feeling."
+      },
+      {
+        "value": 1,
+        "text": "Do something to fix the reason for how you were feeling."
+      },
+      {
+        "value": 2,
+        "text": "Feel unable to stop thinking about how you were feeling."
+      },
+      {
+        "value": 3,
+        "text": "Do something to keep your mind off how you were feeling."
+      },
+      {
+        "value": 4,
+        "text": "Change how you viewed the reason for how you were feeling."
+      },
+      { "value": 5, "text": "Try not to think about how you were feeling." },
+      { "value": 6, "text": "Talk with someone about how you were feeling." },
+      { "value": 7, "text": "Smoke cigarettes." },
+      { "value": 8, "text": "Drink alcohol." },
+      { "value": 9, "text": "Use opioids." },
+      { "value": 10, "text": "Use non-opioid drugs." },
+      { "value": 11, "text": "Eat something." },
+      { "value": 12, "text": "Try to relax." },
+      { "value": 13, "text": "Go to sleep." },
+      { "value": 14, "text": "Argue with someone." },
+      { "value": 15, "text": "Throw or hit something." },
+      { "value": 16, "text": "Think that things will stay bad." },
+      { "value": 17, "text": "Just feel bad." }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "0": "END",
+      "*": 53
+    }
+  },
+  {
+    "id": "53",
+    "text": "For how long did you do that?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "less than 1 minute" },
+      { "value": 1, "text": "1-5 minutes" },
+      { "value": 2, "text": "5-10 minutes" },
+      { "value": 3, "text": "more than 10 minutes" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 54
+    }
+  },
+  {
+    "id": "54",
+    "text": "How much did that make you feel better?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 55
+    }
+  },
+  {
+    "id": "55",
+    "text": "At what time, did you also:",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      {
+        "value": 0,
+        "text": "No, I did not do anything else about how I was feeling."
+      },
+      {
+        "value": 1,
+        "text": "Do something to fix the reason for how you were feeling."
+      },
+      {
+        "value": 2,
+        "text": "Feel unable to stop thinking about how you were feeling."
+      },
+      {
+        "value": 3,
+        "text": "Do something to keep your mind off how you were feeling."
+      },
+      {
+        "value": 4,
+        "text": "Change how you viewed the reason for how you were feeling."
+      },
+      { "value": 5, "text": "Try not to think about how you were feeling." },
+      { "value": 6, "text": "Talk with someone about how you were feeling." },
+      { "value": 7, "text": "Smoke cigarettes." },
+      { "value": 8, "text": "Drink alcohol." },
+      { "value": 9, "text": "Use opioids." },
+      { "value": 10, "text": "Use non-opioid drugs." },
+      { "value": 11, "text": "Eat something." },
+      { "value": 12, "text": "Try to relax." },
+      { "value": 13, "text": "Go to sleep." },
+      { "value": 14, "text": "Argue with someone." },
+      { "value": 15, "text": "Throw or hit something." },
+      { "value": 16, "text": "Think that things will stay bad." },
+      { "value": 17, "text": "Just feel bad." }
+    ],
+    "allow_other": true,
+    "conditions": {
+      "0": "END",
+      "*": 56
+    }
+  },
+  {
+    "id": "56",
+    "text": "For how long did you do that?",
+    "type": "radio",
+    "mandatory": true,
+    "options": [
+      { "value": 0, "text": "less than 1 minute" },
+      { "value": 1, "text": "1-5 minutes" },
+      { "value": 2, "text": "5-10 minutes" },
+      { "value": 3, "text": "more than 10 minutes" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": 57
+    }
+  },
+  {
+    "id": "57",
+    "text": "How much did that make you feel better?",
+    "type": "radio",
+    "options": [
+      { "value": 0, "text": "very slightly/not at all" },
+      { "value": 1, "text": "a little" },
+      { "value": 2, "text": "moderately" },
+      { "value": 3, "text": "quite a bit" },
+      { "value": 4, "text": "extremely" }
+    ],
+    "allow_other": false,
+    "conditions": {
+      "*": "END"
+    }
+  }
+]
