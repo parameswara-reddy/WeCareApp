@@ -57,6 +57,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="P:\github\parameswara-reddy\WeCare\android\app\build\intermediates\exploded-aar\WeCare\react-native-mail-compose\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="731a0bfcd201ef02de16f46b64bef7ba36f743d9">
+        <dex dex="P:\github\parameswara-reddy\WeCare\android\app\build\intermediates\pre-dexed\debug\WeCare-react-native-mail-compose-unspecified_be6cd92f136722ec57c2de97a6fda1ae6013ee7e.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\ParameswaraReddy\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.6.0\3f9b16b774f2c36cfd86dd2053d0b3059531dacc\okhttp-urlconnection-3.6.0.jar"
         jumboMode="false"
         optimize="true"

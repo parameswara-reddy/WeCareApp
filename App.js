@@ -7,8 +7,9 @@ import LoginPage from "./src/pages/LoginPage";
 import Register from "./src/pages/Register";
 import SignIn from "./src/pages/LoginPage";
 import Survey from "./src/pages/Survey";
+import SurveySummay from "./src/pages/SurveySummay";
 
-const AppStack = createStackNavigator({ Dashboard: Dashboard, Survey: Survey  }, { header: null, headerMode: "none" });
+const AppStack = createStackNavigator({ Dashboard: Dashboard, Survey: Survey, SurveySummay: SurveySummay  }, { header: null, headerMode: "none" });
 const AuthStack = createStackNavigator({ SignIn: SignIn }, { header: null, headerMode: "none" });
 
 const AppNavigator = createSwitchNavigator(

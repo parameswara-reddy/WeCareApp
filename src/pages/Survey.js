@@ -28,6 +28,7 @@ import NumberQuestion from "../components/NumberQuestion";
 import MatrixQuestion from "../components/MatrixQuestion";
 import { View, BackHandler, Animated } from "react-native";
 import WhiteFrame from "../components/WhiteFrame";
+
 class Survey extends Component {
   constructor(props) {
     super(props);
@@ -88,7 +89,7 @@ class Survey extends Component {
       answers: answerMap
     };
     this.props.updateSurvey(survey);
-    this.props.navigation.navigate("Dashboard");
+    this.props.navigation.navigate("SurveySummay");
   };
 
   getQuestionComponent = question => {
@@ -114,7 +115,8 @@ class Survey extends Component {
     }
   };
 
-  getInterpolatedQuestion = (tpl, args) => tpl.replace(/\${(\w+)}/g, (_, v) => args[v]);
+  getInterpolatedQuestion = (tpl, args) =>
+    tpl.replace(/\${(\w+)}/g, (_, v) => args[v]);
 
   render() {
     const { questions = [], survey } = this.props;
@@ -124,8 +126,8 @@ class Survey extends Component {
     const { answerMap, questionStack, surveySubmit = false } = this.state;
     const question = questions.find(q => q.id == activeIndex);
     const displayConfirmation = surveyConfirm || surveySubmit;
-    if(question && question.text) {
-      question.text =  this.getInterpolatedQuestion(question.text, answerMap);
+    if (question && question.text) {
+      question.text = this.getInterpolatedQuestion(question.text, answerMap);
     }
     return (
       <WhiteFrame>
@@ -171,15 +173,17 @@ class Survey extends Component {
             </View>
           )}
         {displayConfirmation && (
-          <View style={{paddingVertical: 50}}>
+          <View style={{ paddingVertical: 50 }}>
             <H1>You survey completed. Are you sure you want to submit?</H1>
             <Segment>
-              {questionStack.length > 0 &&<Left>
-                <Button primary onPress={() => this.moveToPreviousQuestion()}>
-                  <Icon name="arrow-back" />
-                  <Text>No</Text>
-                </Button>
-              </Left>}
+              {questionStack.length > 0 && (
+                <Left>
+                  <Button primary onPress={() => this.moveToPreviousQuestion()}>
+                    <Icon name="arrow-back" />
+                    <Text>No</Text>
+                  </Button>
+                </Left>
+              )}
               <Right>
                 <Button primary onPress={() => this.submitSurvey()}>
                   <Text>Submit Survey</Text>

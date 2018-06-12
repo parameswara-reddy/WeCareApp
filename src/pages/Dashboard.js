@@ -19,6 +19,7 @@ import {
   Header,
   Body
 } from "native-base";
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
