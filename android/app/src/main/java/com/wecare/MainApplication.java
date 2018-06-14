@@ -3,6 +3,8 @@ package com.wecare;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.greweb.reactnativeviewshot.RNViewShotPackage;
+import com.github.reactNativeMPAndroidChart.MPAndroidChartPackage;
 import com.reactlibrary.mailcompose.RNMailComposePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -24,6 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNViewShotPackage(),
+            new MPAndroidChartPackage(),
             new RNMailComposePackage()
       );
     }

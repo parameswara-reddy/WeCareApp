@@ -10,9 +10,9 @@ const NumberQuestion = props => {
       <Text>{question.id}{". "}{question.text}</Text>
       <Item underline>
         <Input
-          value={value}
+          value={value.value}
           placeholder={question.hint}
-          onChangeText={(text)=> onChange(question.id, text)}
+          onChangeText={(text)=> onChange(question.id, {value:text,text:text})}
           keyboardType={keyboard}
         />
       </Item>

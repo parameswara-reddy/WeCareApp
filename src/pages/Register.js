@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { H2, H3, Form, Item, Input, Label, Button, Text } from "native-base";
+import { AsyncStorage } from "react-native";
 import { LOGIN_ERROR, ERROR } from "../utils/Messages";
 import * as CONSTANTS from "../utils/CONSTANTS";
 import WhiteFrame from "../components/WhiteFrame";
@@ -9,7 +10,7 @@ import { connect } from "react-redux";
 import * as UserActions from "../actions/user";
 async function storeUser(data) {
   try {
-    await AsyncStorage.setItem("user", JSON.stringify(data));
+    await AsyncStorage.setItem("wecare_user", JSON.stringify(data));
   } catch (error) {
     alert("Unable to Save data:" + JSON.stringify(error));
   }
@@ -17,54 +18,108 @@ async function storeUser(data) {
 class Register extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: {}};
+    this.state = { user: {} };
   }
-  
+
   register = () => {
-    const {user} = this.state;
-    AsyncStorage.setItem("user", JSON.stringify(data)).then(val => {
-      this.props.register(user);
-      this.props.navigation.navigate('SignIn');
+    const { user } = this.state;
+    const {
+      first_name,
+      last_name,
+      mobile_number,
+      email,
+      password,
+      c_password
+    } = user;
+    if (password && password != c_password) {
+      alert("Passwords does not match");
+      return;
+    }
+    AsyncStorage.removeItem('WE_CARE_MOBILE_NUMBER');
+    AsyncStorage.removeItem('wecare_user');
+    AsyncStorage.removeItem('WE_CARE_SURVEY_LIST');
+    AsyncStorage.setItem("wecare_user", JSON.stringify(user)).then(val => {
+      this.props.getUserSuccess(user);
+      this.props.navigation.navigate("SignIn");
     });
-  }
+  };
 
   onPropertyChange = (name, value) => {
-    let {user} = this.state;
+    let { user } = this.state;
     user[name] = value;
-    this.setState({user});
-  }
+    this.setState({ user });
+  };
 
   render() {
+    const { user = {} } = this.state;
+    const {
+      first_name,
+      last_name,
+      mobile_number,
+      email,
+      password,
+      c_password
+    } = user;
     return (
       <WhiteFrame justifyContent="flex-start">
-        <H2>Hello {this.props.register.name}, {Utils.getGreeting()}</H2>
         <Form>
           <Text>Please fill below details</Text>
-          <Item floatingLabel>
+          <Item fixedLabel>
             <Label>First Name</Label>
-            <Input autoCapitalize="words" onChangeText={(value)=> this.onPropertyChange('first_name', value)}/>
+            <Input
+              autoCapitalize="words"
+              value={first_name}
+              onChangeText={value => this.onPropertyChange("first_name", value)}
+            />
           </Item>
-          <Item floatingLabel>
+          <Item fixedLabel>
             <Label>Last Name</Label>
-            <Input  onChangeText={(value)=> this.onPropertyChange('last_name', value)}/>
+            <Input
+              autoCapitalize="words"
+              value={last_name}
+              onChangeText={value => this.onPropertyChange("last_name", value)}
+            />
           </Item>
-          <Item floatingLabel>
+          <Item fixedLabel>
             <Label>Mobile Number</Label>
-            <Input keyboardType="phone-pad"  onChangeText={(value)=> this.onPropertyChange('mobile_number', value)}/>
+            <Input
+              keyboardType="phone-pad"
+              value={mobile_number}
+              onChangeText={value =>
+                this.onPropertyChange("mobile_number", value)
+              }
+            />
           </Item>
-          <Item floatingLabel>
+          <Item fixedLabel>
             <Label>Email</Label>
-            <Input keyboardType="email-address"  onChangeText={(value)=> this.onPropertyChange('email', value)}/>
+            <Input
+              keyboardType="email-address"
+              value={email}
+              onChangeText={value => this.onPropertyChange("email", value)}
+            />
           </Item>
-          <Item floatingLabel>
+          <Item fixedLabel>
             <Label>Password</Label>
-            <Input secureTextEntry={true}  onChangeText={(value)=> this.onPropertyChange('password', value)}/>
+            <Input
+              secureTextEntry={true}
+              value={password}
+              onChangeText={value => this.onPropertyChange("password", value)}
+            />
           </Item>
-          <Item floatingLabel>
+          <Item fixedLabel>
             <Label>Confirm Password</Label>
-            <Input secureTextEntry={true}  onChangeText={(value)=> this.onPropertyChange('c_password', value)}/>
+            <Input
+              secureTextEntry={true}
+              value={c_password}
+              onChangeText={value => this.onPropertyChange("c_password", value)}
+            />
           </Item>
-          <Button style={{ marginTop: CONSTANTS.MARGIN_MD }} primary block onPress= {()=> this.register()}>
+          <Button
+            style={{ marginTop: CONSTANTS.MARGIN_MD }}
+            primary
+            block
+            onPress={() => this.register()}
+          >
             <Text>Register</Text>
           </Button>
         </Form>
@@ -85,4 +140,7 @@ const mapDispatchToProps = dispatch => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Register);

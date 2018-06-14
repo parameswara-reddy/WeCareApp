@@ -4,12 +4,12 @@
         "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\layout\\notification_template_lines.xml"
     },
     {
-        "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\layout\\abc_screen_toolbar.xml"
-    },
-    {
         "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
         "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
         "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
@@ -58,6 +58,10 @@
     {
         "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
         "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\oval_marker.xml",
+        "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\WeCare\\reactNativeMPAndroidChart\\unspecified\\res\\layout\\oval_marker.xml"
     },
     {
         "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
@@ -162,5 +166,9 @@
     {
         "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
         "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rectangle_marker.xml",
+        "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\WeCare\\reactNativeMPAndroidChart\\unspecified\\res\\layout\\rectangle_marker.xml"
     }
 ]

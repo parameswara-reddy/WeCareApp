@@ -18,29 +18,31 @@ class CheckBoxQuestion extends Component {
   }
   render() {
     let { onChange, question = {}, value =[]} = this.props;
-    const { display_other } = this.state;
     let selectOption = (selectedValue) => {
-        if(!value.includes(selectedValue))
+        if(value.filter(val => (val.value == selectedValue.value)).length == 0)
         {
           value.push(selectedValue);
+        } else {
+          value = value.filter(val => val.value != selectedValue.value);
         }
         onChange(question.id, value)
     }
+    const keys = value.map(val => val.value);
+    const display_other = (value.filter(val => val.text == '_Other_').length > 0);
+    const display_other_value = display_other && (value.find(val => val.text == '_Other_').value);
     return (
       <List>
         <Text>{question.id}{". "}{question.text}</Text>
         {question.options.map(option => (
           <ListItem key={option.value}>
             <CheckBox
-              checked={!display_other && value.includes(option.value)}
+              checked={keys.includes(option.value)}
               onPress={() => {
-                this.setState({ display_other: false });
-                selectOption(option.value);
+                selectOption(option);
               }}
             />
             <Text onPress={() => {
-                this.setState({ display_other: false });
-                selectOption(option.value);
+                selectOption(option);
               }}> {option.text}</Text>
           </ListItem>
         ))}
@@ -49,7 +51,7 @@ class CheckBoxQuestion extends Component {
             <ListItem key="other">
               <CheckBox
                 selected={display_other}
-                onPress={() => this.setState({ display_other: true })}
+                onPress={() => selectOption({value:'', 'text':"_Other_"})}
               />
               <Text> Others (Please specify)</Text>
             </ListItem>
@@ -57,7 +59,7 @@ class CheckBoxQuestion extends Component {
               <ListItem key="other_text">
                 <Input
                   value={question.value}
-                  onChangeText={text => onChange(question.id, text)}
+                  onChangeText={text => selectOption({value:text, 'text':"_Other_"})}
                   placeholder="Please type here"
                   value={value}
                 />

@@ -64,9 +64,9 @@ const MatrixQuestion = props => {
                 }}
               >
                 <Radio
-                  selected={choice.value == value[q.id]}
+                  selected={choice.value == (value[q.id] && value[q.id].value)}
                   onPress={() => {
-                    optionSelected(q.id, choice.value);
+                    optionSelected(q.id, choice);
                   }}
                 />
               </Col>

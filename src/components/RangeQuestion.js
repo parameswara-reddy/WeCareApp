@@ -5,16 +5,17 @@ const RangeQuestion = props => {
   const { onChange, question = {}, value } = props;
   question.hint = question.hint || "Please provide your answer here";
   const keyboard = "visible-password";
+  const val = value && value.value;
   return (
     <Form style={{ width: "100%" }}>
       <Text>{question.id}{". "}{question.text}</Text>
       <View style={{ margin: 10 }}>
         <Slider
-          value={value}
+          value={val}
           minimumValue={question.minimumValue}
           maximumValue={question.maximumValue}
           step={1}
-          onSlidingComplete={value => onChange(question.id, value)}
+          onSlidingComplete={value => onChange(question.id, {value:value, 'text':value})}
         />
       </View>
       <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-between" }}>
@@ -22,7 +23,7 @@ const RangeQuestion = props => {
         <Right><Text>{question.maximumValue} - Extremely</Text></Right>
       </View>
       <View style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}>
-        <Text>Your answer is: {value || question.minimumValue}</Text>
+        <Text>Your answer is: {val || question.minimumValue}</Text>
       </View>
     </Form>
   );

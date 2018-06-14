@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet, AsyncStorage } from "react-native";
 import CoverImage from "../assets/cover.jpeg";
 import WhiteFrame from "../components/WhiteFrame";
+import * as surveyActions from "../actions/survey";
+import * as UserActions from "../actions/user";
 import {
   Right,
   Button,
@@ -17,7 +19,9 @@ import {
   H1,
   H3,
   Header,
-  Body
+  Body,
+  Segment,
+  Left
 } from "native-base";
 
 class HomePage extends Component {
@@ -43,18 +47,31 @@ class HomePage extends Component {
     }
     return "Good evening!";
   };
+
+  deleteAccount = () => {
+    this.props.getUserSuccess({});
+    AsyncStorage.removeItem('WE_CARE_MOBILE_NUMBER');
+    AsyncStorage.removeItem('wecare_user');
+    AsyncStorage.removeItem('WE_CARE_SURVEY_LIST');
+    this.props.navigation.navigate("SignIn");
+  }
+
+  logout = () => {
+    this.props.navigation.navigate("SignIn");
+  }
+
   render() {
     const { loggedInUser = {}, survey } = this.props;
     return (
       <WhiteFrame justifyContent="flex-start">
-        <H1>Hi {loggedInUser.name},</H1>
+        <H1>Hi {loggedInUser.first_name + " " + loggedInUser.last_name},</H1>
         <H3>{this.getGreeting()}</H3>
         <Grid style={{ marginVertical: 10 }}>
           <Col>
             <Card>
               <Header>
                 <Text style={{ fontSize: 40, color: "#FFFFFF", padding: 5 }}>
-                  {survey.surveyList.length}
+                  {survey.surveyList.length + ""}
                 </Text>
               </Header>
               <Body style={{ padding: 10 }}>
@@ -63,14 +80,16 @@ class HomePage extends Component {
             </Card>
           </Col>
           <Col>
-            <Card>
+            <Card >
               <Header>
                 <Text style={{ fontSize: 40, color: "#FFFFFF", padding: 5 }}>
                   Reports
                 </Text>
               </Header>
               <Body style={{ padding: 10 }}>
-                <H3>Coming soon</H3>
+                <Text onPress={() => this.props.navigation.push("SurveyReport")} style={{
+              textDecorationLine: "underline"
+            }}>View Reports</Text>
               </Body>
             </Card>
           </Col>
@@ -83,6 +102,32 @@ class HomePage extends Component {
         >
           <Text>Start Survey</Text>
         </Button>
+        <Segment>
+          <Left>
+            <Text
+              style={{
+                textDecorationLine: "underline"
+              }}
+              onPress={() => {
+                this.deleteAccount();
+              }}
+            >
+              Delete My Account
+            </Text>
+          </Left>
+          <Right>
+            <Text
+              style={{
+                textDecorationLine: "underline"
+              }}
+              onPress={() => {
+                this.logout();
+              }}
+            >
+              Logout
+            </Text>
+          </Right>
+        </Segment>
       </WhiteFrame>
     );
   }
@@ -102,7 +147,16 @@ const mapStateToProps = state => {
     survey: state.survey
   };
 };
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      ...surveyActions,
+      ...UserActions
+    },
+    dispatch
+  );
+};
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(HomePage);

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as surveyActions from "../actions/survey";
+import * as UserActions from "../actions/user";
 import {
   ActivityIndicator,
   AsyncStorage,
@@ -20,7 +21,9 @@ export class AuthLoadingScreen extends Component {
   _bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     const mobileNumber = await AsyncStorage.getItem('WE_CARE_MOBILE_NUMBER');
-
+    let user = await AsyncStorage.getItem('wecare_user');
+    user = user ? JSON.parse(user) : {};
+    this.props.getUserSuccess(user);
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
@@ -39,7 +42,8 @@ export class AuthLoadingScreen extends Component {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      ...surveyActions
+      ...surveyActions,
+      ...UserActions
     },
     dispatch
   );

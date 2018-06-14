@@ -17,24 +17,32 @@ class RadioQuestion extends Component {
     };
   }
   render() {
-    const { onChange, question = {}, value } = this.props;
-    const { display_other } = this.state;
+    const { onChange, question = {}, value = {} } = this.props;
+    const display_other = value.text === "_Others_";
+    const val = value.value;
     return (
       <List>
-        <Text>{question.id}{". "}{question.text}</Text>
+        <Text>
+          {question.id}
+          {". "}
+          {question.text}
+        </Text>
         {question.options.map(option => (
           <ListItem key={option.value}>
             <Radio
-              selected={!display_other && value == option.value}
+              selected={val == option.value}
               onPress={() => {
-                this.setState({ display_other: false });
-                onChange(question.id, option.value);
+                onChange(question.id, option);
               }}
             />
-            <Text onPress={() => {
-                this.setState({ display_other: false });
-                onChange(question.id, option.value);
-              }}> {option.text}</Text>
+            <Text
+              onPress={() => {
+                onChange(question.id, option);
+              }}
+            >
+              {" "}
+              {option.text}
+            </Text>
           </ListItem>
         ))}
         {question.allow_other && (
@@ -42,17 +50,20 @@ class RadioQuestion extends Component {
             <ListItem key="other">
               <Radio
                 selected={display_other}
-                onPress={() => this.setState({ display_other: true })}
+                onPress={() =>
+                  onChange(question.id, { value: "", text: "_Others_" })
+                }
               />
               <Text> Others (Please specify)</Text>
             </ListItem>
             {display_other && (
               <ListItem key="other_text">
                 <Input
-                  value={question.value}
-                  onChangeText={text => onChange(question.id, text)}
+                  onChangeText={text =>
+                    onChange(question.id, { value: text, text: "_Others_" })
+                  }
                   placeholder="Please type here"
-                  value={value}
+                  value={val}
                 />
               </ListItem>
             )}

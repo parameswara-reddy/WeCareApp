@@ -19,12 +19,15 @@ class LoginPage extends Component {
       mobileNumber: "",
       password: ""
     };
-    this._bootstrapAsync();
+    //this._bootstrapAsync();
   }
 
   _bootstrapAsync = async () => {
-    const mobileNumber = await AsyncStorage.getItem('WE_CARE_MOBILE_NUMBER');
-    this.setState({mobileNumber});
+    //const mobileNumber = await AsyncStorage.getItem('WE_CARE_MOBILE_NUMBER');
+  }
+  componentDidMount() {
+    const {loggedInUser={}} = this.props;
+    this.setState({mobileNumber:loggedInUser.mobile_number});
   }
 
   onMobileNumberChange = mobileNumber => {
@@ -48,21 +51,21 @@ class LoginPage extends Component {
   };
   login = async () => {
     const { mobileNumber, password } = this.state;
-    const {getUserSuccess, navigation} = this.props;
-    if(mobileNumber == "+17039353757" && password == "4005") {
+    const {getUserSuccess, navigation, loggedInUser={}} = this.props;
+    if((mobileNumber && (mobileNumber == loggedInUser.mobile_number)) && (password && (password == loggedInUser.password))) {
       AsyncStorage.setItem('WE_CARE_MOBILE_NUMBER', mobileNumber);
       const surveyList = await AsyncStorage.getItem("WE_CARE_SURVEY_LIST");
       this.props.setSurveys(JSON.parse(surveyList));
-      const data = {
-        mobile_number: "+17039353757",
-        name: "Parameswara Reddy"
-      };
-      getUserSuccess(data);
       navigation.navigate("Dashboard");
     } else {
       alert("Invalid Mobile number or password");
     }
   };
+
+  createAccount = () => {
+    this.props.navigation.navigate("Register")
+  }
+
   forgotPassword = () => {
     Alert.alert(ERROR, "Forgot password");
   };
@@ -74,7 +77,7 @@ class LoginPage extends Component {
           <View style={{padding: 20, display: 'flex', flex: 1, alignItems: 'center'}}>
             <Image source={logo} />
           </View>
-          <Item floatingLabel>
+          <Item fixedLabel>
             <Label>Mobile Number</Label>
             <Icon name="phone-portrait" />
             <Input
@@ -86,8 +89,8 @@ class LoginPage extends Component {
               onChangeText={text => this.onMobileNumberChange(text)}
             />
           </Item>
-          <Item floatingLabel>
-            <Label>PIN</Label>
+          <Item fixedLabel>
+            <Label>Password</Label>
             <Icon name="lock" />
             <Input
               selectTextOnFocus={true}
@@ -126,7 +129,7 @@ class LoginPage extends Component {
           >
             Don't have account?
           </Text>
-          <Text
+          {/* <Text
             style={{
               textDecorationLine: "underline"
             }}
@@ -135,7 +138,7 @@ class LoginPage extends Component {
             }}
           >
             Forgot password?
-          </Text>
+          </Text> */}
         </View>
       </WhiteFrame>
     );
@@ -149,4 +152,7 @@ const mapDispatchToProps = dispatch => {
     dispatch
   );
 };
-export default connect(null, mapDispatchToProps)(LoginPage);
+const mapStateToProps = state => ({
+  loggedInUser: state.users.loggedInUser
+});
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

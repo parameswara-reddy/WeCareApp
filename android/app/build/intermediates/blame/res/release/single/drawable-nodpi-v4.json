@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-nodpi-v4\\oval_marker.png",
+        "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\WeCare\\reactNativeMPAndroidChart\\unspecified\\res\\drawable-nodpi-v4\\oval_marker.png"
+    },
+    {
+        "merged": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-nodpi-v4\\rectangle_marker.png",
+        "source": "P:\\github\\parameswara-reddy\\WeCare\\android\\app\\build\\intermediates\\exploded-aar\\WeCare\\reactNativeMPAndroidChart\\unspecified\\res\\drawable-nodpi-v4\\rectangle_marker.png"
+    }
+]

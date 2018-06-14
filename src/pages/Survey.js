@@ -61,15 +61,15 @@ class Survey extends Component {
     const activeIndex = params.questionId || 1;
     const conditions = questions.find(question => question.id == activeIndex)
       .conditions;
-    if (conditions[answerMap[activeIndex]]) {
-      nextQuestionId = conditions[answerMap[activeIndex]];
+    if (conditions[(answerMap[activeIndex]||{}).value]) {
+      nextQuestionId = conditions[answerMap[activeIndex].value];
     } else {
       nextQuestionId = conditions["*"];
     }
     questionStack.push(params.questionId);
     this.setState({ questionStack });
     if (nextQuestionId != "END" && nextQuestionId) {
-      this.props.navigation.push("Survey", {
+      this.props.navigation.navigate("Survey", {
         questionId: nextQuestionId
       });
     } else {
@@ -116,7 +116,7 @@ class Survey extends Component {
   };
 
   getInterpolatedQuestion = (tpl, args) =>
-    tpl.replace(/\${(\w+)}/g, (_, v) => args[v]);
+    tpl.replace(/\${(\w+)}/g, (_, v) => args[v].value);
 
   render() {
     const { questions = [], survey } = this.props;
@@ -174,7 +174,7 @@ class Survey extends Component {
           )}
         {displayConfirmation && (
           <View style={{ paddingVertical: 50 }}>
-            <H1>You survey completed. Are you sure you want to submit?</H1>
+            <H1>You reached end of the survey. Are you sure you want to submit?</H1>
             <Segment>
               {questionStack.length > 0 && (
                 <Left>
