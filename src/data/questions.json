@@ -480,7 +480,7 @@
   {
     "id": "33",
     "text":
-      "At that time, did you also use any of the following (check all that apply)",
+      "Since the last time you completed this survey, have you used any of the following (check all that apply)",
     "type": "checkbox",
     "options": [
       { "value": 0, "text": "tobaco" },

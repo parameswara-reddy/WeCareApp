@@ -23,6 +23,7 @@ import {
   Segment,
   Left
 } from "native-base";
+import * as csvExporter from "../utils/csvExporter";
 import MailCompose from "react-native-mail-compose";
 class SurveyReport extends Component {
   constructor(props) {
@@ -57,8 +58,8 @@ class SurveyReport extends Component {
         attachments: [
           {
             filename: "survey-data", // [Optional] If not provided, UUID will be generated.
-            ext: ".json",
-            mimeType: "application/json",
+            ext: ".csv",
+            mimeType: "text/csv",
             text: JSON.stringify(mailData, undefined, "\t") //, // Use this if the data is in UTF8 text.
             //data: '...BASE64_ENCODED_STRING...', // Or, use this if the data is not in plain text.
           },
